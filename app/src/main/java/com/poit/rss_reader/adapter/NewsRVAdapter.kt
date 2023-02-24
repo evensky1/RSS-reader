@@ -1,23 +1,13 @@
 package com.poit.rss_reader.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextClock
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.poit.rss_reader.R
 import com.poit.rss_reader.model.Item
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.net.URL
-import java.nio.charset.Charset
-
 
 class NewsRVAdapter(
     val context: Context,
@@ -31,7 +21,6 @@ class NewsRVAdapter(
         val description = itemView.findViewById<TextView>(R.id.itemDescription)
         val pubDate = itemView.findViewById<TextView>(R.id.itemPubDate)
         val author = itemView.findViewById<TextView>(R.id.itemAuthor)
-        val image = itemView.findViewById<ImageView>(R.id.itemImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,12 +40,6 @@ class NewsRVAdapter(
         holder.description.text = feed[position].title
         holder.pubDate.text = feed[position].pubDate
         holder.author.text = feed[position].creator
-        println(feed[position].content.url)
-        println(feed[position].bmp?.width)
-        println(feed[position].bmp?.height)
-        println(feed[position].bmp?.rowBytes)
-        holder.image.setImageBitmap(
-            feed[position].bmp?.let { Bitmap.createScaledBitmap(it, 481, 361, true) })
 
         holder.itemView.setOnClickListener {
             itemClickInterface.onItemClick(feed[position])

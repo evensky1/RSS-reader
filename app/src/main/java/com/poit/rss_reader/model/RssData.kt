@@ -1,7 +1,5 @@
 package com.poit.rss_reader.model
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import org.simpleframework.xml.*
 
 @Root(name = "rss")
@@ -72,10 +70,9 @@ data class Item(
     @field:Element(name = "content")
     var content: Content,
     @field:Element(name = "guid")
-    var guid: String,
-    var bmp: Bitmap?
+    var guid: String
 ) {
-    constructor() : this("", "", "", "", "", Content(), "", null)
+    constructor() : this("", "", "", "", "", Content(), "")
 }
 
 @Root(name = "content")

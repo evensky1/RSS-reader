@@ -1,16 +1,12 @@
 package com.poit.rss_reader.repository
 
-import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.core.graphics.get
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
 import com.poit.rss_reader.model.RSS
 import com.poit.rss_reader.model.RssItem
 import okhttp3.*
 import org.simpleframework.xml.core.Persister
 import java.io.IOException
-import java.net.URL
 
 class RssFeedFetcher {
     val rssItemsCache = mutableMapOf<String, RssItem>()
@@ -78,17 +74,6 @@ class RssFeedFetcher {
                     val serializer = Persister()
                     val xmlStr = it.body!!.string().replace("<atom:link[\\s\\S]*?\\/>".toRegex(), "")
                     val dataFetch = serializer.read(RSS::class.java, xmlStr)
-                    dataFetch.channel.items.forEach {item ->
-                        val url = URL(item.content.url)
-                        val connection = url.openConnection()
-                        item.bmp = BitmapFactory.decodeStream(connection.getInputStream())
-
-                        println(item.bmp?.get(1, 1))
-                        println(item.bmp?.get(10, 10))
-                        println(item.bmp?.get(100, 100))
-                        println(item.bmp?.get(40, 50))
-                        println(item.bmp?.get(12, 35))
-                    }
                     rssFeed.postValue(dataFetch)
                 }
             }
