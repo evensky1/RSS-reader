@@ -16,7 +16,7 @@ data class RSS(
     @field:Attribute(name = "xmlns:dc", required = false)
     var xmlnsDc: String,
 
-    @field:Attribute(name = "version")
+    @field:Attribute(name = "version", required = false)
     var version: String
 ) {
     constructor() : this(Channel(), "", "", "", "")
@@ -25,19 +25,19 @@ data class RSS(
 @Root(name = "channel")
 @Namespace(prefix = "atom", reference = "emt")
 data class Channel(
-    @field:Element(name = "title")
+    @field:Element(name = "title", required = false)
     var title: String,
-    @field:Element(name = "description")
+    @field:Element(name = "description", required = false)
     var description: String,
-    @field:Element(name = "pubDate")
+    @field:Element(name = "pubDate", required = false)
     var pubDate: String,
     @field:Element(name = "link", required = false)
     var link: String,
-    @field:Element(name = "generator")
+    @field:Element(name = "generator", required = false)
     var generator: String,
     @field:Element(name = "image", type = Image::class)
     var image: Image,
-    @field:ElementList(inline = true, name = "item")
+    @field:ElementList(inline = true, name = "item", required = false)
     var items: MutableList<Item>
 ) {
     constructor() : this("", "", "", "", "", Image(), mutableListOf())
@@ -45,31 +45,31 @@ data class Channel(
 
 @Root(name = "image")
 class Image {
-    @field:Element(name = "link")
+    @field:Element(name = "link", required = false)
     var link: String = ""
 
-    @field:Element(name = "url")
+    @field:Element(name = "url", required = false)
     var url: String = ""
 
-    @field:Element(name = "title")
+    @field:Element(name = "title", required = false)
     var title: String = ""
 }
 
 @Root(name = "item")
 data class Item(
-    @field:Element(name = "title")
+    @field:Element(name = "title", required = false)
     var title: String,
-    @field:Element(name = "description")
+    @field:Element(name = "description", required = false)
     var description: String,
     @field:Element(name = "link", required = false)
     var link: String,
-    @field:Element(name = "creator")
+    @field:Element(name = "creator", required = false)
     var creator: String,
-    @field:Element(name = "pubDate")
+    @field:Element(name = "pubDate", required = false)
     var pubDate: String,
-    @field:Element(name = "content")
+    @field:Element(name = "content", required = false)
     var content: Content,
-    @field:Element(name = "guid")
+    @field:Element(name = "guid", required = false)
     var guid: String
 ) {
     constructor() : this("", "", "", "", "", Content(), "")

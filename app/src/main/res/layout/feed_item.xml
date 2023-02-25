@@ -24,23 +24,11 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/itemDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:padding="4dp"
-            android:text="Description"
-            android:layout_below="@id/itemTitle"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/itemPubDate"
             android:text="Publication date"
-            android:layout_below="@id/itemDescription"
+            android:layout_below="@id/itemTitle"
             android:layout_margin="4dp"
             android:padding="4dp"
             android:textColor="@color/white"/>

@@ -6,6 +6,7 @@ import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity(), ItemClickInterface {
         viewModel.feed.observe(this) { rss ->
             rss?.let { adapter.updateList(it.channel.items) }
         }
+
+        viewModel.updateFeed(currentLocation)
 
         getRssButton.setOnClickListener {
             viewModel.updateFeed(searchEdit.text.toString())

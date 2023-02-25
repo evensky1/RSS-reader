@@ -18,7 +18,6 @@ class NewsRVAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.itemTitle)
-        val description = itemView.findViewById<TextView>(R.id.itemDescription)
         val pubDate = itemView.findViewById<TextView>(R.id.itemPubDate)
         val author = itemView.findViewById<TextView>(R.id.itemAuthor)
     }
@@ -37,7 +36,6 @@ class NewsRVAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = feed[position].title
-        holder.description.text = feed[position].title
         holder.pubDate.text = feed[position].pubDate
         holder.author.text = feed[position].creator
 
